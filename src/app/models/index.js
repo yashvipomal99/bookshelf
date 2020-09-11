@@ -20,6 +20,7 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 db.books = require("./book.model.js")(sequelize, Sequelize);
+db.reviews = require("./review.model.js")(sequelize, Sequelize);
 db.user = require("./user.model.js")(sequelize, Sequelize);
 db.role = require("./role.model.js")(sequelize, Sequelize);
 
@@ -33,6 +34,13 @@ db.user.belongsToMany(db.role, {
   foreignKey: "userId",
   otherKey: "roleId"
 });
+
+db.books.belongsToMany(db.reviews, {
+     through: "book_reviews",
+     foreignKey: "bookId",
+});
+
+
 
 db.ROLES = ["user", "admin"];
 
