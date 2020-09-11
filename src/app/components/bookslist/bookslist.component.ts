@@ -12,18 +12,45 @@ export class BookslistComponent implements OnInit {
   currentIndex = -1;
   bookname : '';
 
+  page = 1;
+  count = 0;
+  pageSize = 5;
+  
+
   constructor(private bookshelfservice : BookshelfService) { }
 
   ngOnInit(): void {
     this.retrievebooks();
   }
+  getRequestParams(searchTitle, page, pageSize) {
+    
+    let params = {};
+
+    if (searchTitle) {
+      params[`bookname`] = searchTitle;
+    }
+
+    if (page) {
+      params[`page`] = page - 1;
+    }
+
+    if (pageSize) {
+      params[`size`] = pageSize;
+    }
+
+    return params;
+  }
 
   retrievebooks() {
-    this.bookshelfservice.getAll()
+    const params = this.getRequestParams(this.bookname, this.page, this.pageSize);
+
+    this.bookshelfservice.showAll(params)
       .subscribe(
-        data => {
-          this.books = data;
-          console.log(data);
+        response => {
+          const { books, totalItems } = response;
+          this.books = books;
+          this.count = totalItems;
+          console.log(response);
         },
         error => {
           console.log(error);
@@ -51,6 +78,11 @@ export class BookslistComponent implements OnInit {
         error => {
           console.log(error);
         });
+  }
+
+  handlePageChange(event) {
+    this.page = event;
+    this.retrievebooks();
   }
 
 }

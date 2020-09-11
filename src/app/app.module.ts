@@ -15,6 +15,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { ReviewComponent } from './components/review/review.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { ReviewComponent } from './components/review/review.component';
     MatDividerModule,
     MatListModule,
     MatAutocompleteModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgxPaginationModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

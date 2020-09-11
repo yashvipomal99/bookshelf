@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 const baseUrl = 'http://localhost:8080/api/books';
 
@@ -9,6 +10,10 @@ const baseUrl = 'http://localhost:8080/api/books';
 export class BookshelfService {
 
   constructor(private http: HttpClient) { }
+
+  showAll(params): Observable<any> {
+    return this.http.get(baseUrl, { params });
+  }
 
   getAll() {
     return this.http.get(baseUrl);

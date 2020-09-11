@@ -2,6 +2,21 @@ const db = require("../models");
 const Book = db.books;
 const Op = db.Sequelize.Op;
 
+const getPagination = (page, size) => {
+  const limit = size ? +size : 5;
+  const offset = page ? page * limit : 0;
+
+  return { limit, offset };
+};
+
+const getPagingData = (data, page, limit) => {
+  const { count: totalItems, rows: books } = data;
+  const currentPage = page ? +page : 0;
+  const totalPages = Math.ceil(totalItems / limit);
+
+  return { totalItems, books, totalPages, currentPage };
+};
+
 exports.create = (req, res) => {
 
     if (!req.body.bookname) {
@@ -34,12 +49,15 @@ exports.create = (req, res) => {
   };
 
   exports.findAll = (req, res) => {
-    const bookname = req.query.bookname;
+    const { page, size, bookname } = req.query;
     var condition = bookname ? { bookname: { [Op.like]: `%${bookname}%` } } : null;
   
-    Book.findAll({ where: condition })
+    const { limit, offset } = getPagination(page, size);
+  
+    Book.findAndCountAll({ where: condition, limit, offset })
       .then(data => {
-        res.send(data);
+        const response = getPagingData(data, page, limit);
+        res.send(response);
       })
       .catch(err => {
         res.status(500).send({
