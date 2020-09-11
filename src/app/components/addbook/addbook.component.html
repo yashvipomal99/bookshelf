@@ -1,0 +1,98 @@
+<div class="submit-form temp">
+    <div *ngIf="!submitted">
+      <div class="form-group">
+        <label for="bookname">Book Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="bookname"
+          required
+          [(ngModel)]="book.bookname"
+          name="bookname"
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="authorname">Author Name</label>
+        <input
+          class="form-control"
+          id="authorname"
+          required
+          [(ngModel)]="book.authorname"
+          name="authorname"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="publicationname">Publication Name</label>
+        <input
+          class="form-control"
+          id="publicationname"
+          required
+          [(ngModel)]="book.publicationname"
+          name="publicationname"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="publicationdate">Publication Date</label>
+        <input
+          class="form-control"
+          id="publicationdate"
+          required
+          [(ngModel)]="book.publicationdate"
+          name="publicationdate"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="synopsis">Synopsis</label>
+        <input
+          class="form-control"
+          id="synopsis"
+          required
+          [(ngModel)]="book.synopsis"
+          name="synopsis"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="isbn">ISBN</label>
+        <input
+          class="form-control"
+          id="isbn"
+          required
+          [(ngModel)]="book.isbn"
+          name="isbn"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="avgreview">Average Review</label>
+        <input
+          class="form-control"
+          id="avgreview"
+          required
+          [(ngModel)]="book.avgreview"
+          name="avgreview"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="totalreviews">Total Reviews</label>
+        <input
+          class="form-control"
+          id="totalreviews"
+          required
+          [(ngModel)]="book.totalreviews"
+          name="totalreviews"
+        />
+      </div>
+  
+      <button (click)="savebook()" class="btn btn-success">Submit</button>
+    </div>
+  
+    <div *ngIf="submitted">
+      <h4>You submitted successfully!</h4>
+    </div>
+    </div>

@@ -12,14 +12,28 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "~10.1.0",
+    "@angular/cdk": "^10.2.0",
     "@angular/common": "~10.1.0",
     "@angular/compiler": "~10.1.0",
     "@angular/core": "~10.1.0",
     "@angular/forms": "~10.1.0",
+    "@angular/material": "^10.2.0",
     "@angular/platform-browser": "~10.1.0",
     "@angular/platform-browser-dynamic": "~10.1.0",
     "@angular/router": "~10.1.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.30",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "bootstrap": "^4.5.2",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.5.1",
+    "jsonwebtoken": "^8.5.1",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.1.0",
     "rxjs": "~6.6.0",
+    "sequelize": "^6.3.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
   },
@@ -42,5 +56,9 @@
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~4.0.2"
-  }
+  },
+  "description": "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.0.",
+  "main": "server.js",
+  "author": "",
+  "license": "ISC"
 }

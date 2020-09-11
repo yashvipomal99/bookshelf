@@ -1,0 +1,80 @@
+<div class="list row tempspace">
+    <div class="col-md-8">
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Enter Book Name"
+          [(ngModel)]="bookname"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            (click)="searchbook()" 
+          >
+            Search
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h4>Books List</h4>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let book of books; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActivebook(book, i)"
+        >
+          {{ book.bookname }}
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-6">
+      <div *ngIf="currentbook">
+        <h4>Book</h4>
+        <div>
+          <label><strong>Book Name:</strong></label> {{ currentbook.bookname }}
+        </div>
+        <div>
+          <label><strong>Author Name:</strong></label>
+          {{ currentbook.authorname }}
+        </div>
+        <div>
+        <label><strong>Publication Name:</strong></label>
+        {{ currentbook.publicationname }}
+        </div>
+        <div>
+        <label><strong>Publication Date:</strong></label>
+        {{ currentbook.publicationdate }}
+        </div>
+        <div>
+        <label><strong>Synopsis:</strong></label>
+        {{ currentbook.synopsis }}
+        </div>
+        <div>
+        <label><strong>isbn</strong></label>
+        {{ currentbook.isbn }}
+        </div>
+        <div>
+          <label><strong>Average Review : </strong></label>
+          {{ currentbook.avgreview }}
+          </div>
+          <div>
+            <label><strong>Total Reviews:</strong></label>
+            {{ currentbook.totalreviews }}
+            </div>
+  
+        <a class="badge badge-warning main" href="/books/{{ currentbook.id }}">
+          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+          Edit
+        </a>
+      </div>
+  
+      <div *ngIf="!currentbook">
+        <br />
+        <p>Please click on a Book...</p>
+      </div>
+    </div>
+  </div>
